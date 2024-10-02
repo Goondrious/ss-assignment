@@ -22,8 +22,7 @@ Notes:
 The purpose of this exercise is for us to evaluate and understand your software development processes and design choices. Besides Fastapi, you are free to choose the supporting libraries which will help you achieve the goal. You are welcome to take this exercise as far as you like. However, make sure to leave enough time to document your system thoroughly as it will help us understand your project and the intention behind your design decisions.
 
 
-# Initial Commit
-
-## Shane's Notes
+# Shane's Dev Log
 
 - just getting acquianted with FastAPI by going through the basic tutorials!
+- split up the project into frontend/backend to get a basic upload & compress function working
