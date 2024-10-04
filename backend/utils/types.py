@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Union
+from typing import Optional, Union
 from pydantic import BaseModel
 
 class Token(BaseModel):
@@ -12,13 +12,27 @@ class TokenData(BaseModel):
 class User(BaseModel):
     id: str
     username: str
-    password: str
+    password: Optional[str] = None
 
 class UserImage(BaseModel):
   id: str
   user_id: str
   path: str
   name: str
-  uploaded_at: datetime
-  num_compressions: int
+  extension: str
+  size: int
+  uploaded_at: str
+  num_compressions: Optional[int] = 0
+  signed_url: Optional[str] = "" 
 
+class UserImageCompression(BaseModel):
+  id: str
+  image_id: str
+  path: str
+  quality: int
+  resize_width: Optional[int] = 0
+  created_at: str
+  signed_url: Optional[str] = "" 
+
+
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S%z'

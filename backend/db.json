@@ -1,1 +1,1 @@
-{"users": {"Picky": {"id": "123", "username": "Picky", "password": "$2b$12$cfvLC3UEXTduAJNgfBxwve.rJfOxoQUJ6tdVzGpaGRfqk2xu8hjrm"}}, "images": {}, "imageCompressions": {}}
+{"users": {"test-user": {"id": "123", "username": "test-user", "password": ""}}, "images": {"123": {"a": 1, "b": 2, "456": {"num_compressions": 1, "user_id": "123", "id": "456", "name": "test", "path": "/a/b/c", "extension": ".jpg", "size": 100, "uploaded_at": "2024-10-06 11:12:43"}}}, "imageCompressions": {}, "test": "value"}
