@@ -29,10 +29,12 @@ The purpose of this exercise is for us to evaluate and understand your software 
 - just getting acquianted with FastAPI by going through the basic tutorials!
 - split up the project into frontend/backend to get a basic upload & compress function working
 - did a basic image upload route to get a feel for the process and added a simple json file db
+- went through the "Security tutorial" from FastAPI just to get a feel and have a slightly organic "user flow" for the assignment
 
 # Resources
 
 - FastAPI docs
+  - [Security tutorial](https://fastapi.tiangolo.com/tutorial/security/)
 - Pillow docs
 - ChatGPT for high-level grokking
-- a good example of Fullstack FastAPI & React https://github.com/fastapi/full-stack-fastapi-template/blob/master/docker-compose.yml
+- a [good example of Fullstack FastAPI & React](https://github.com/fastapi/full-stack-fastapi-template/blob/master/docker-compose.yml)

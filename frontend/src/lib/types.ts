@@ -1,17 +1,21 @@
+export type User = {
+  username: string;
+};
+
 export type UserImage = {
   id: string;
-  userId: string;
+  user_id: string;
   path: string;
   name: string;
-  uploadedAt: Date;
-  numCompressions: number;
+  uploaded_at: Date;
+  num_compressions: number;
 };
 
 export type ImageCompression = {
-  imageId: string;
+  image_id: string;
   id: string;
   path: string;
   quality: number;
   size: number;
-  createdAt: Date;
+  created_at: Date;
 };
