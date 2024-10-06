@@ -31,6 +31,7 @@ class UserImageCompression(BaseModel):
   path: str
   quality: int
   resize_width: Optional[int] = 0
+  size: Optional[int] = 0
   created_at: str
   signed_url: Optional[str] = "" 
 

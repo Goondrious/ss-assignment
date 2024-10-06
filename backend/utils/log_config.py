@@ -1,13 +1,13 @@
 import logging
 
-from utils.settings import Settings
+from utils.settings import current_settings
 
-logger = logging.getLogger('api_logs')
-logger.setLevel(Settings.log_level)
+api_logger = logging.getLogger('api_logs')
+api_logger.setLevel(current_settings.log_level)
 
 ch = logging.StreamHandler()
-ch.setLevel(Settings.log_level)
+ch.setLevel(current_settings.log_level)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 ch.setFormatter(formatter)
-logger.addHandler(ch)
+api_logger.addHandler(ch)
 

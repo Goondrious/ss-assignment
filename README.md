@@ -30,8 +30,10 @@ The purpose of this exercise is for us to evaluate and understand your software 
 - split up the project into frontend/backend to get a basic upload & compress function working
 - did a basic image upload route to get a feel for the process and added a simple json file db
 - went through the "Security tutorial" from FastAPI just to get a feel and have a slightly organic "user flow" for the assignment
+- I sketched out a minimal version of the CRUD routes and the associated frontend interactions. I had some very basic tests for the json db interactions
+- I expanded the tests and refactored the backend code a bit
 
-# Resources
+## Resources
 
 - FastAPI docs
   - [Security tutorial](https://fastapi.tiangolo.com/tutorial/security/)
