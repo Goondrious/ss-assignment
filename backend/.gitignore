@@ -9,3 +9,4 @@ htmlcov
 filestore
 filestore-test
 db-test.json
+db.json

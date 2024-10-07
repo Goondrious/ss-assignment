@@ -69,7 +69,7 @@ def create_and_store_user_image_compression(filestore_dir: str, user: User, user
 			final_image = img.resize((resize_width, h_size))
 
 		if user_image.extension == 'jpeg':
-			final_image.save(save_path, format='JPEG', quality=quality)
+			final_image.save(save_path, format='JPEG', quality=quality, optimize=True)
 		elif user_image.extension == 'png':
 			final_image.save(save_path, format='PNG', optimize=True)
 		elif user_image.extension == 'gif':

@@ -24,16 +24,55 @@ Notes:
 
 The purpose of this exercise is for us to evaluate and understand your software development processes and design choices. Besides Fastapi, you are free to choose the supporting libraries which will help you achieve the goal. You are welcome to take this exercise as far as you like. However, make sure to leave enough time to document your system thoroughly as it will help us understand your project and the intention behind your design decisions.
 
-# Shane's Dev Log
+## System Design
 
-- just getting acquianted with FastAPI by going through the basic tutorials!
-- split up the project into frontend/backend to get a basic upload & compress function working
-- did a basic image upload route to get a feel for the process and added a simple json file db
-- went through the "Security tutorial" from FastAPI just to get a feel and have a slightly organic "user flow" for the assignment
+High Level Functionality
+
+- two-part image upload & compression = users upload raw images to the server. From these images, users make compressions based on `quality` (only jpeg) and `width` input. Constraints:
+  - upload up to 10 images per user
+  - upload up to 10 image compressions per image
+  - 110 images total per user
+- simple jwt authorization, using username+password for login
+
+Database
+
+```typescript
+{
+  users: { [userId]: User },
+  images: { [userId]: { [imageId]: UserImage } }
+  compressions: { [imageId]: { [compressionId]: UserImageCompression } }
+}
+```
+
+- json database setup to primarily to use ids for lookups. No complex querying is supported
+- nested keys are used for parent-child relationships:
+  - all of a user's images are found in the `db.images[userId]` dictionary
+  - all of an images compressions are found in the `db.compressions[imageId]` dictionary
+
+File storage and access
+
+- images and compressions are stored on the filesystem in `/filestore/{userId}/{imageName}` and `/filestore/{userId}/compressions/{compressionName}`
+- files are accessed through signed urls with a short expiry time. Signatures are issued when new entities are created or when a user loads a related page (e.g. the user home page loads all their images)
+
+## Shane's Dev Log
+
+- I got acquianted with FastAPI by going through some tutorials
+- I split up the project into frontend/backend then got a basic upload & compress function working
+- I split the image upload route into upload and compress to get a feel for the process and added a simple json file db
+- I went through the "Security tutorial" from FastAPI out of curiosity and added a slightly organic "auth flow" for the assignment
 - I sketched out a minimal version of the CRUD routes and the associated frontend interactions. I had some very basic tests for the json db interactions
-- I expanded the tests and refactored the backend code a bit
+- I expanded the testing and refactored the backend code a bit
+- I updated the frontend to map the new API and improved the overflow user flow and appearance
 
-## Resources
+### TODO
+
+- dockerization & cleanup scripts
+  - proper db & fs init (via docker!)
+- explore more intricate compression options
+  - byte manipulation, 3rd-party api, color grading etc.
+- frontend quality-of-life = more images, pagination, sorting, tagging & even a simple search
+
+### Resources
 
 - FastAPI docs
   - [Security tutorial](https://fastapi.tiangolo.com/tutorial/security/)
