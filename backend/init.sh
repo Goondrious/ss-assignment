@@ -1,0 +1,1 @@
+cp ./db-backup.json ./db.json

@@ -12,7 +12,7 @@ from utils.settings import current_settings
 from utils.auth import authenticate_user, create_access_token, sign_compression_url, sign_image_url
 from utils.image import create_and_store_user_image_compression, delete_user_image_compression_fs, delete_user_image_fs, store_user_image
 from utils.types import Token, TokenData, User, UserImage, UserImageCompression
-from utils.db import create_user_image_compression_db, create_user_image_db, delete_user_image_compression_db, delete_user_image_db, get_db, get_user_db, get_user_image_compression_count_db, get_user_image_compressions_db, get_user_image_db, get_user_image_compression_db, get_user_image_count_db, get_user_image_db, get_user_images_db
+from utils.db import create_user_image_compression_db, create_user_image_db, delete_user_image_compression_db, delete_user_image_db, get_db, get_user_db, get_user_image_compression_count_db, get_user_image_compressions_db, get_user_image_db, get_user_image_compression_db, get_user_image_count_db, get_user_image_db, get_user_images_db, init_db
 
 app = FastAPI()
 

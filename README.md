@@ -24,9 +24,50 @@ Notes:
 
 The purpose of this exercise is for us to evaluate and understand your software development processes and design choices. Besides Fastapi, you are free to choose the supporting libraries which will help you achieve the goal. You are welcome to take this exercise as far as you like. However, make sure to leave enough time to document your system thoroughly as it will help us understand your project and the intention behind your design decisions.
 
+## Installation & Dev Usage
+
+Requirements:
+
+- python version 3.12.6 (e.g. through pyenv with the [virtualenv plugin](https://github.com/pyenv/pyenv-virtualenv))
+- fastapi
+- node version 20.16.0 (e.g. through nvm)
+
+Setup:
+
+- Create a virtualenv: `pyenv virtualenv dev`
+- Activate a virtualenv: `pyenv activate dev`
+- Install backend dependencies: `cd ./backend && pip install -r requirements.txt`
+- Init dev db: `cd ./backend && ./init.sh`
+- Install frontend dependencies: `cd ./frontend && nvm use && npm install`
+
+Commands:
+
+- `cd ./backend && fastapi dev main.py`
+- `cd ./frontend && npm run dev`
+- `cd ./backend && pytest`
+
+The dev db starts with a test user:
+
+- username = Picky
+- password = test
+
+## Directory Grok
+
+- `/backend` = python FastAPI api
+  - `main.py` = the primary api, run through `fastapi dev main.py`
+  - `test_xyz.py` = some testing, run via `pytest`
+  - `/utils`
+    - `image.py` = the image processing and filestore interactions
+    - `db.py` = all of the database interactions
+- `/frontend` = React project bootstrapped with Vite and Shadcn (and Tailwind). Mostly boilerplate.
+  - `/components/ui` = Shadcn components
+  - `/hooks` = a few React hooks
+  - `/lib` = api interactions, types, constants etc.
+  - `/pages` = the two main pages of the app
+
 ## System Design
 
-High Level Functionality
+### High Level Functionality
 
 - two-part image upload & compression = users upload raw images to the server. From these images, users make compressions based on `quality` (only jpeg) and `width` input. Constraints:
   - upload up to 10 images per user
@@ -34,7 +75,7 @@ High Level Functionality
   - 110 images total per user
 - simple jwt authorization, using username+password for login
 
-Database
+### Database
 
 ```typescript
 {
@@ -49,7 +90,7 @@ Database
   - all of a user's images are found in the `db.images[userId]` dictionary
   - all of an images compressions are found in the `db.compressions[imageId]` dictionary
 
-File storage and access
+### File storage and access
 
 - images and compressions are stored on the filesystem in `/filestore/{userId}/{imageName}` and `/filestore/{userId}/compressions/{compressionName}`
 - files are accessed through signed urls with a short expiry time. Signatures are issued when new entities are created or when a user loads a related page (e.g. the user home page loads all their images)
@@ -68,8 +109,8 @@ File storage and access
 
 - dockerization & cleanup scripts
   - proper db & fs init (via docker!)
-- explore more intricate compression options
-  - byte manipulation, 3rd-party api, color grading etc.
+- explore more intricate compression options! I stopped pretty short with some basic PIL options, but did do some reading and saw a lot of potential
+  - byte manipulation, 3rd-party api, color-grading etc.
 - frontend quality-of-life = more images, pagination, sorting, tagging & even a simple search
 
 ### Resources
